@@ -6,7 +6,6 @@
   <title>Lillypad Poetry</title>
   <style>
     html {
-
       height: 100%;
     }
 
@@ -101,11 +100,189 @@
         width: 100%;
       }
     }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    .pond-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .lillypad {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(152, 251, 152, 0.8), rgba(102, 205, 170, 0.6), rgba(32, 178, 170, 0.4));
+      filter: blur(10px);
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+
+    .lillypad-1 {
+      width: 120px;
+      height: 120px;
+      left: 10%;
+      top: 20%;
+      animation: float1 8s infinite;
+    }
+
+    .lillypad-2 {
+      width: 80px;
+      height: 80px;
+      right: 15%;
+      top: 40%;
+      animation: float2 6s infinite;
+      animation-delay: -2s;
+    }
+
+    .lillypad-3 {
+      width: 150px;
+      height: 150px;
+      left: 30%;
+      bottom: 25%;
+      animation: float3 10s infinite;
+      animation-delay: -4s;
+    }
+
+    .lillypad-4 {
+      width: 60px;
+      height: 60px;
+      right: 30%;
+      top: 15%;
+      animation: float4 7s infinite;
+      animation-delay: -1s;
+    }
+
+    .lillypad-5 {
+      width: 100px;
+      height: 100px;
+      left: 60%;
+      top: 60%;
+      animation: float5 9s infinite;
+      animation-delay: -3s;
+    }
+
+    .lillypad-6 {
+      width: 90px;
+      height: 90px;
+      left: 5%;
+      bottom: 10%;
+      animation: float6 11s infinite;
+      animation-delay: -5s;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    @keyframes float1 {
+      0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+
+      50% {
+        transform: translateY(-30px) translateX(20px) scale(1);
+      }
+
+      100% {
+        transform: translateY(-10px) translateX(-15px) scale(1);
+      }
+    }
+
+    @keyframes float2 {
+      0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+
+      50% {
+        transform: translateY(40px) translateX(-25px) scale(1);
+      }
+
+      100% {
+        transform: translateY(15px) translateX(10px) scale(1);
+      }
+    }
+
+    @keyframes float3 {
+      0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+
+      50% {
+        transform: translateY(-50px) translateX(30px) scale(1);
+      }
+
+      100% {
+        transform: translateY(-20px) translateX(-20px) scale(1);
+      }
+    }
+
+    @keyframes float4 {
+      0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+
+      50% {
+        transform: translateY(25px) translateX(-15px) scale(1);
+      }
+
+      100% {
+        transform: translateY(-5px) translateX(25px) scale(1);
+      }
+    }
+
+    @keyframes float5 {
+      0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+
+      50% {
+        transform: translateY(-35px) translateX(-30px) scale(1);
+      }
+
+      100% {
+        transform: translateY(10px) translateX(15px) scale(1);
+      }
+    }
+
+    @keyframes float6 {
+      0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(40px) scale(1);
+      }
+
+      100% {
+        transform: translateY(30px) translateX(-10px) scale(1);
+      }
+    }
   </style>
 </head>
 
 <body>
-
+  <div class="pond-container">
+    <div class="lillypad lillypad-1"></div>
+    <div class="lillypad lillypad-2"></div>
+    <div class="lillypad lillypad-3"></div>
+    <div class="lillypad lillypad-4"></div>
+    <div class="lillypad lillypad-5"></div>
+    <div class="lillypad lillypad-6"></div>
+    <div class="overlay"></div>
+  </div>
   <p id="text">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Integer nec odio. Praesent libero.
@@ -119,6 +296,7 @@
     <button id="unblackout">Reset Words</button>
   </div>
 
+  <div class="lillypad"></div>
   <script>
     const textElement = document.getElementById('text');
 
