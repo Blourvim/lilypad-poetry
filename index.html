@@ -109,7 +109,9 @@
 
 
     .pond-container {
-      position: relative;
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
@@ -274,15 +276,6 @@
 </head>
 
 <body>
-  <div class="pond-container">
-    <div class="lillypad lillypad-1"></div>
-    <div class="lillypad lillypad-2"></div>
-    <div class="lillypad lillypad-3"></div>
-    <div class="lillypad lillypad-4"></div>
-    <div class="lillypad lillypad-5"></div>
-    <div class="lillypad lillypad-6"></div>
-    <div class="overlay"></div>
-  </div>
   <p id="text">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Integer nec odio. Praesent libero.
@@ -296,7 +289,15 @@
     <button id="unblackout">Reset Words</button>
   </div>
 
-  <div class="lillypad"></div>
+  <div class="pond-container">
+    <div class="lillypad lillypad-1"></div>
+    <div class="lillypad lillypad-2"></div>
+    <div class="lillypad lillypad-3"></div>
+    <div class="lillypad lillypad-4"></div>
+    <div class="lillypad lillypad-5"></div>
+    <div class="lillypad lillypad-6"></div>
+    <div class="overlay"></div>
+  </div>
   <script>
     const textElement = document.getElementById('text');
 
