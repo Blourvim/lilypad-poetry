@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lillypad Poetry</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      padding: 2rem;
+      line-height: 1.8;
+      background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Lilypad animations */
+    .lilypad {
+      position: absolute;
+      background: #4caf50;
+      border-radius: 50% 50% 50% 50%;
+      opacity: 0.6;
+      animation: float 20s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(10px) rotate(5deg);
+      }
+
+      100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+    }
+
+    .word {
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 0.2rem;
+      transition: background-color 0.3s, color 0.3s, transform 0.2s;
+      white-space: pre-wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .word:hover {
+      transform: scale(1.1);
+    }
+
+    .selected {
+      background-color: #fff59d;
+      color: #333;
+      border-radius: 3px;
+      padding: 0 3px;
+    }
+
+    .blacked-out {
+      background-color: #333;
+      color: #333;
+      border-radius: 2px;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    button {
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background-color: #80cbc4;
+      border: none;
+      border-radius: 8px;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #4db6ac;
+      transform: scale(1.05);
+    }
+
+    p {
+      font-size: 1.1rem;
+      white-space: pre-wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .controls {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <p id="text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Integer nec odio. Praesent libero.
+    Sed cursus ante dapibus diam.
+    Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+    Duis sagittis ipsum.
+  </p>
+
+  <div class="controls">
+    <button id="blackout">Blackout Remaining Words</button>
+    <button id="unblackout">Reset Words</button>
+  </div>
+
+  <script>
+    const textElement = document.getElementById('text');
+
+    const paragraphs = textElement.innerText.split('\n');
+    textElement.innerHTML = paragraphs.map(p => {
+      const words = p.split(/\s+/);
+      return words.map(word => `<span class="word">${word}</span>`).join(' ') + '<br>';
+    }).join('');
+
+    textElement.addEventListener('click', (e) => {
+      if (e.target.classList.contains('word')) {
+        e.target.classList.toggle('selected');
+        e.target.classList.remove('blacked-out');
+      }
+    });
+
+    document.getElementById('blackout').addEventListener('click', () => {
+      document.querySelectorAll('.word').forEach(word => {
+        if (!word.classList.contains('selected')) {
+          word.classList.add('blacked-out');
+        }
+      });
+    });
+
+    // Unblackout / Reset words
+    document.getElementById('unblackout').addEventListener('click', () => {
+      document.querySelectorAll('.word').forEach(word => {
+        word.classList.remove('blacked-out', 'selected');
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>
