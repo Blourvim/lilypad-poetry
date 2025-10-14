@@ -5,10 +5,16 @@
   <meta charset="UTF-8">
   <title>Lillypad Poetry</title>
   <style>
+    html {
+
+      height: 100%;
+    }
+
     body {
       font-family: 'Georgia', serif;
       padding: 2rem;
       line-height: 1.8;
+      min-height: 100%;
       background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
       color: #333;
       max-width: 800px;
@@ -17,30 +23,6 @@
       overflow: hidden;
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Lilypad animations */
-    .lilypad {
-      position: absolute;
-      background: #4caf50;
-      border-radius: 50% 50% 50% 50%;
-      opacity: 0.6;
-      animation: float 20s infinite ease-in-out;
-      pointer-events: none;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-20px) translateX(10px) rotate(5deg);
-      }
-
-      100% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-      }
     }
 
     .word {
